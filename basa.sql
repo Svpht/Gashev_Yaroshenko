@@ -8,16 +8,19 @@ CREATE TABLE IF NOT EXISTS gashev_yaroshenko.taxi_cars (
 );
 CREATE TABLE IF NOT EXISTS gashev_yaroshenko.driver (
     driver_id INTEGER PRIMARY KEY,
-    rating_drive INTEGER NOT NULL
+    rating_drive FLOAT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS gashev_yaroshenko.passag (
     user_id INTEGER PRIMARY KEY,
-    rating INTEGER NOT NULL
+    rating FLOAT NOT NULL
 );
 
 
 CREATE TABLE IF NOT EXISTS gashev_yaroshenko.orders (
     order_id INTEGER PRIMARY KEY,
+    id_car INTEGER,
+    user_id INTEGER,
+    driver_id INTEGER,
     FOREIGN KEY (id_car) REFERENCES gashev_yaroshenko.taxi_cars(id_car),
     FOREIGN KEY (user_id) REFERENCES gashev_yaroshenko.passag(user_id),
     FOREIGN KEY (driver_id) REFERENCES gashev_yaroshenko.driver(driver_id),
